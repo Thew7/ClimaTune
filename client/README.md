@@ -1,36 +1,16 @@
-# ClimaTune Alarm Clock
-This is a modern alarm clock application built with React and Vite, featuring a responsive design styled with Tailwind CSS. It includes core clock functionalities (Alarm, Timer, Stopwatch) and integrates with Spotify to play weather-appropriate music when an alarm is triggered.
+# React + Vite
 
-## Local Installation & Setup
-Follow these steps to get a copy of the project running on your local machine for development and testing.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-### Prerequisites
-Node.js & npm: This is the essential JavaScript runtime and package manager needed to install dependencies and run the application.
-Download Link: [Download Node.js](https://nodejs.org/en/download/) (Install the latest LTS version)
+Currently, two official plugins are available:
 
-#### Step 1: Get the Code (Download ZIP)
-1. Go to the repository page on GitHub.
-2. Click the green < > Code button.
-3. Click "Download ZIP" and save the file to your computer.
-4. Unzip the file. This will create a folder, named ClimaTune.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-#### Step 2: Install Dependencies
-You must use the command line to install the necessary JavaScript libraries (React, Tailwind, etc.) that the application relies on.
-1. Open your terminal or command prompt.
-2. Navigate into the project's client folder. This is the directory that contains the package.json file:
-   - cd ClimaTune/client
-3. Run the following command:
-   - npm install
+## React Compiler
 
-#### Step 3: Run the Application
-The application uses the Vite development server.
-1. In the same ClimaTune-main/client directory, start the server
-   - npm run dev
-2. To open the project, paste the following URL into your web browser.
-   - http://127.0.0.1:5173/
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Spotify Integration
-To enable music playback on your alarms:
-1. Navigate to the "Music" tab in the running application.
-2. Click the "Log in with Spotify" button and follow the prompts to authorize the app.
-   - Note: Music playback requires a Spotify Premium account and an active Spotify device (like the desktop app) to be open.
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

@@ -12,14 +12,15 @@ Download Link: [Download Node.js](https://nodejs.org/en/download/) (Install the 
 1. Go to the repository page on GitHub.
 2. Click the **green < >** Code button.
 3. Click "**Download ZIP**" and save the file to your computer.
-4. Unzip the file. This will create a folder, named **ClimaTune-main**.
-5. Inside that folder is another folder named **ClimaTune-main**, rename that foler to **client**.
+4. Unzip the file to your desktop. This will create a folder, named **ClimaTune-main**.
+5. Inside that folder is another folder named **ClimaTune-main**, this holds our **client** & **documents** folders.
+6. **documents** holds the project documents (i.e., User Manual & Developers Guide)
 
 ### Step 2: Install Dependencies
 You must use the command line to install the necessary JavaScript libraries (React, Tailwind, etc.) that the application relies on.
 1. Open your command prompt.
 2. Navigate into the project's client folder. This is the directory that contains the package.json file:
-   - cd Desktop/ClimaTune-main/client
+   - cd Desktop/ClimaTune-main/ClimaTune-main/client
 3. Run the following command:
    - npm install
 
@@ -27,7 +28,8 @@ You must use the command line to install the necessary JavaScript libraries (Rea
 The application uses the Vite development server.
 1. In the same ClimaTune-main/client directory, start the server
    - npm run dev
-2. To open the project, paste the following URL into your web browser.
+2. You should now see "VITE v7.2.2 ready" in the command prompt
+3. To open the project, paste the following URL into your web browser.
    - http://127.0.0.1:5173/
 
 ## Spotify Integration

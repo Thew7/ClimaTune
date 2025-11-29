@@ -47,7 +47,7 @@ const initializeActiveTab = () => {
     return savedTab && ALL_TABS.includes(savedTab) ? savedTab : 'Alarms';
 };
 
-const CLIENT_ID = 'a887e836c9bf4bf1a5ce6f2cb037c865'; 
+const CLIENT_ID = ''; 
 const REDIRECT_URI = 'http://127.0.0.1:5173';
 const TOKEN_PROXY_PATH = '/spotify-token'; 
 

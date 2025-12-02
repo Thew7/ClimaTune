@@ -1,7 +1,7 @@
 // src/hooks/useCurrentWeather.js
 import { useState, useEffect, useRef } from 'react';
 
-const API_KEY = '';
+const API_KEY = '8f1109f6f97e43c44a2ec57ec9212c1e';
 const CACHE_KEY = 'weatherCache';
 const CACHE_DURATION = 10 * 60 * 1000; // 10 Minutes in milliseconds
 

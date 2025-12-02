@@ -12,7 +12,7 @@ import Timer from './components/Timer';
 import Music from './components/Music'; 
 import Stopwatch from './components/Stopwatch';
 import SnoozeTimer from './components/SnoozeTimer'; 
-import DevMenu from './components/DevMenu'; // New Component
+import DevMenu from './components/DevMenu'; 
 
 const STORAGE_KEY = 'alarmAppAlarms';
 const TOKEN_KEY = 'spotifyAccessToken';
@@ -65,7 +65,9 @@ export default function App() {
   
   // Dev Override State
   const [weatherOverride, setWeatherOverride] = useState(null);
-  const { weather: apiWeather, loading: weatherLoading } = useCurrentWeather();
+  // CHANGED: Destructured refetch as refetchWeather
+  const { weather: apiWeather, loading: weatherLoading, refetch: refetchWeather } = useCurrentWeather();
+  
   // Effective Weather (Override > API)
   const weather = weatherOverride || apiWeather;
 
@@ -167,10 +169,8 @@ export default function App() {
     }
   };
 
-  // CHANGED: Triggered when the visual timer hits 00:00
   const handleSnoozeComplete = () => {
       setSnoozeTargetTime(null);
-      // Re-trigger the specific snoozed alarm immediately
       const snoozedAlarm = alarms.find(a => a.isSnoozed);
       if (snoozedAlarm) {
           setActiveAlarm(snoozedAlarm);
@@ -185,9 +185,8 @@ export default function App() {
       }));
   };
 
-  // Regular Scheduled Trigger
   useEffect(() => {
-    if (snoozeTargetTime) return; // Don't double trigger if snoozing
+    if (snoozeTargetTime) return; 
     const currentHours = now.getHours().toString().padStart(2, '0');
     const currentMinutes = now.getMinutes().toString().padStart(2, '0'); 
     const currentTimeString = `${currentHours}:${currentMinutes}`;
@@ -198,7 +197,6 @@ export default function App() {
     }
   }, [now, alarms, activeAlarm, weatherLoading, snoozeTargetTime]);
 
-  // DEV Actions
   const handleDevTrigger = () => {
       setActiveAlarm({ id: 999, time: "NOW", label: "Dev Test", snoozeEnabled: true, snoozeDuration: 1 });
   };
@@ -253,16 +251,14 @@ export default function App() {
         </>
       )}
 
-      {/* CHANGED: Passing Props to Timer */}
       {activeTab === 'Timer' && <Timer spotifyToken={spotifyToken} weather={weather} />}
       {activeTab === 'Music' && <Music activeTab={activeTab} token={spotifyToken} />}
       {activeTab === 'Stopwatch' && <Stopwatch />}
-      {/* CHANGED: Dev Menu */}
-      {activeTab === 'Dev' && <DevMenu onSetWeather={setWeatherOverride} onTriggerAlarm={handleDevTrigger} currentWeather={weather} />}
+      {/* CHANGED: Passing onForceRefresh */}
+      {activeTab === 'Dev' && <DevMenu onSetWeather={setWeatherOverride} onTriggerAlarm={handleDevTrigger} currentWeather={weather} onForceRefresh={refetchWeather} />}
 
       <NavBar activeTab={activeTab} onTabChange={handleTabChange} />
 
-      {/* CHANGED: Passed onComplete to snooze timer */}
       {snoozeTargetTime && (activeTab === 'Alarms' || activeTab === 'Alarm') && (
           <SnoozeTimer targetTime={snoozeTargetTime} onCancel={cancelSnooze} onComplete={handleSnoozeComplete} />
       )}
